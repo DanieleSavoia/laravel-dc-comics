@@ -9,7 +9,12 @@
 </head>
 
 <body>
-    <h1 class="text-center">Ciao da vite</h1>
+    <h1 class="text-center">Dc-Comics</h1>
+    @foreach ($comics as $comic)
+    {{ $comics->price }}
+    @endforeach
+
+
 
 </body>
 
