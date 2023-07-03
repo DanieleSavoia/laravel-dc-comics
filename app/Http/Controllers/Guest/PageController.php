@@ -3,20 +3,17 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comic;
+
 
 class PageController extends Controller
 {
-    public function index()
+    public function home()
     {
-
-        $comics = Comic::all();
-        return view('index', compact('comics'));
+        return view('home');
     }
-    public function show($id)
+
+    public function about()
     {
-        //return 'sono la pagina di dettaglio del fumetto con id' . $id;
-        $comics = Comic::FindOrFail($id);
-        return view('show', compact('comics'));
+        return view('about');
     }
 }
