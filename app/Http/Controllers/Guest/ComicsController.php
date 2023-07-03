@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class ComicsController extends Controller
 {
+    private $validations = [
+        'thumb'           => 'url|max:200',
+        'title'        => 'required|string|min:5|max:100',
+        'series'          => 'required|string|max:20',
+        'description'   => 'string',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +44,24 @@ class ComicsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validare i dati
+        $request->validate($this->validations);
+
+        $data = $request->all(); // estrae i dati che l'utente ha inserito nel form e li mette in un array associativo
+
+        // salvare i dati nel database
+        $newComic = new Comic();
+        $newComic->thumb          = $data['thumb'];
+        $newComic->title       = $data['title'];
+        $newComic->series         = $data['series'];
+        $newComic->description  = $data['description'];
+        $newComic->save();
+
+
+
+        // return 'scommentare se serve debuggare questo metodo';
+        // return to_route('comics.show', ['comics' => $newComic->id]);
+        return redirect()->route('comics.show', ['comics' => $newComic->id]);
     }
 
     /**
@@ -46,9 +70,9 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($comics)
     {
-        //
+        return view('comics.show', compact('comics'));
     }
 
     /**
