@@ -12,9 +12,9 @@
                         <div class="card-title">for: {{ $comic->price }}</div>
                         <div class="card-title">sale date: {{ $comic->sale_date }}</div>
                         <div>
-                            <a href="{{ route('comics.show', ['$comics->id']) }}" class="btn btn-primary">Comic Details</a>
+                            <a href="{{ route('comics.show', ['comic'=>$comic ]) }}" class="btn btn-primary">Comic Details</a>
                             <a href="{{ route('comics.create') }}" class="btn btn-success">New</a>
-                            <a href="{{ route('comics.show', ['$comics->id']) }}" class="btn btn-danger">X</a>
+                            <a href="{{ route('comics.show', ['comic'=>$comic ]) }}" class="btn btn-danger">X</a>
                         </div>
                     </div>
                 </div>

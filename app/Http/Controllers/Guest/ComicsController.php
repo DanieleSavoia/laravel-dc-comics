@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ComicsController extends Controller
 {
     private $validations = [
-        'thumb'           => 'url|max:200',
+        'thumb'           => 'url|max:300',
         'title'        => 'required|string|min:5|max:100',
         'series'          => 'required|string|max:20',
         'description'   => 'string',
@@ -70,9 +70,9 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($comics)
+    public function show(Comic $comic)
     {
-        return view('comics.show', compact('comics'));
+        return view('comics.show', compact('comic'));
     }
 
     /**
